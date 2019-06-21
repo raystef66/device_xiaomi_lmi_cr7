@@ -11,4 +11,5 @@ $(call inherit-product-if-exists, vendor/xiaomi/phoenix/phoenix-vendor.mk)
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay
 
+PRODUCT_BUILD_SUPER_PARTITION := false
 PRODUCT_SHIPPING_API_LEVEL := 29
