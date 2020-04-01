@@ -75,6 +75,10 @@ PRODUCT_PACKAGES += \
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay
 
+# Power
+PRODUCT_PACKAGES += \
+    android.hardware.power@1.2-service.lmi
+
 # Telephony
 TARGET_PROVIDES_QTI_TELEPHONY_JAR := true
 TARGET_USES_ALTERNATIVE_MANUAL_NETWORK_SELECT := true
