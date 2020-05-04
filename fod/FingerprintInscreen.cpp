@@ -92,7 +92,6 @@ Return<void> FingerprintInscreen::onRelease() {
 
 Return<void> FingerprintInscreen::onShowFODView() {
     TouchFeatureService->setTouchMode(Touch_Fod_Enable, 1);
-    xiaomiDisplayFeatureService->setFeature(0, 17, 1, 255);
     return Void();
 }
 
