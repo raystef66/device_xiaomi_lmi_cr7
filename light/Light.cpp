@@ -16,15 +16,10 @@
 
 #define LOG_TAG "light"
 
-#define BRIGHTNESS_PATH "/sys/class/backlight/panel0-backlight/brightness"
 #define MAXIMUM_DISPLAY_BRIGHTNESS 2047
-#define DISPPARAM_PATH "/sys/devices/platform/soc/ae00000.qcom,mdss_mdp/drm/card0/card0-DSI-1/disp_param"
-#define DISPPARAM_HBM_FOD_OFF "0xE0000"
 
 #include <log/log.h>
 
-#include <cmath>
-#include <fstream>
 #include <stdio.h>
 
 #include "Light.h"
@@ -34,12 +29,6 @@ namespace hardware {
 namespace light {
 namespace V2_0 {
 namespace implementation {
-
-template <typename T>
-static void set(const std::string& path, const T& value) {
-    std::ofstream file(path);
-    file << value;
-}
 
 static_assert(LIGHT_FLASH_NONE == static_cast<int>(Flash::NONE),
     "Flash::NONE must match legacy value.");
@@ -79,11 +68,7 @@ Return<Status> Light::setLight(Type type, const LightState& state)  {
 
     // Scale display brightness.
     if (type == Type::BACKLIGHT) {
-	int realBrightness = get(BRIGHTNESS_PATH, 0);
-        float alpha = 1.0 - pow(realBrightness / 2047.0 * 430.0 / 600.0, 0.455);
-        int brightness_path = alpha * 255;
-        set(BRIGHTNESS_PATH, brightness_path);
-	set(DISPPARAM_PATH, DISPPARAM_HBM_FOD_OFF);
+        legacyState.color = (state.color & 0xFF) * MAXIMUM_DISPLAY_BRIGHTNESS / 0xFF;
     }
 
     int ret = hwLight->set_light(hwLight, &legacyState);
