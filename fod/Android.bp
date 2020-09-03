@@ -31,6 +31,7 @@ cc_binary {
         "vendor.lineage.biometrics.fingerprint.inscreen@1.0",
         "vendor.xiaomi.hardware.displayfeature@1.0",
         "vendor.xiaomi.hardware.fingerprintextension@1.0",
+        "vendor.xiaomi.hardware.touchfeature@1.0",
     ],
 }
 
