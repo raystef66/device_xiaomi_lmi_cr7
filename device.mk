@@ -131,7 +131,9 @@ DEVICE_PACKAGE_OVERLAYS += \
 # overlay-remove
 PRODUCT_PACKAGES += \
     FrameworksResCommon \
-    FrameworksResTarget
+    FrameworksResTarget \
+    DevicesOverlay \
+    DevicesAndroidOverlay
 
 # Permissions
 PRODUCT_COPY_FILES += \
