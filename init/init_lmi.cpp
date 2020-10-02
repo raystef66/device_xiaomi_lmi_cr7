@@ -30,6 +30,7 @@
 
 #include <fstream>
 #include <unistd.h>
+#include <vector>
 
 #include <android-base/properties.h>
 #define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
@@ -41,36 +42,52 @@
 using android::base::GetProperty;
 using android::init::property_set;
 
+std::vector<std::string> ro_props_default_source_order = {
+    "",
+    "bootimage.",
+    "odm.",
+    "product.",
+    "system.",
+    "vendor.",
+};
 
-void property_override(char const prop[], char const value[])
+void property_override(char const prop[], char const value[], bool add = true)
 {
     prop_info *pi;
-    pi = (prop_info*) __system_property_find(prop);
+    pi = (prop_info *) __system_property_find(prop);
     if (pi)
         __system_property_update(pi, value, strlen(value));
-    else
+    else if (add)
         __system_property_add(prop, strlen(prop), value, strlen(value));
 }
-void property_override_dual(char const system_prop[],
-    char const vendor_prop[], char const value[])
-{
-    property_override(system_prop, value);
-    property_override(vendor_prop, value);
-}
+
+void set_ro_build_prop(const std::string &prop, const std::string &value) {
+    for (const auto &source : ro_props_default_source_order) {
+        auto prop_name = "ro." + source + "build." + prop;
+        property_override(prop_name.c_str(), value.c_str(), false);
+    }
+};
+
+void set_ro_product_prop(const std::string &prop, const std::string &value) {
+    for (const auto &source : ro_props_default_source_order) {
+        auto prop_name = "ro.product." + source + prop;
+        property_override(prop_name.c_str(), value.c_str(), false);
+    }
+};
 
 void vendor_load_properties() {
     std::string region;
     region = GetProperty("ro.boot.hwc", "GLOBAL");
 
     if (region == "GLOBAL") {
-        property_override_dual("ro.product.model", "ro.vendor.product.model", "Pocophone F2 Pro");
-        property_override_dual("ro.product.device", "ro.product.vendor.device", "lmi");
-        property_override_dual("ro.build.fingerprint", "ro.vendor.build.fingerprint", "Redmi/lmi/lmi:10/QKQ1.191117.002/V12.0.3.0.QJKMIXM:user/release-keys");
+        set_ro_product_prop("model", "Pocophone F2 Pro");
+        set_ro_product_prop("device", "lmi");
+        set_ro_build_prop("fingerprint", "Redmi/lmi/lmi:10/QKQ1.191117.002/V12.0.3.0.QJKMIXM:user/release-keys");
         property_override("ro.build.description", "lmi-user 10 QKQ1.191117.002 V12.0.3.0.QJKMIXM release-keys");
     } else if (region == "CN") {
-        property_override_dual("ro.product.model", "ro.vendor.product.model", "Redmi K30 Pro");
-        property_override_dual("ro.product.device", "ro.product.vendor.device",  "lmi");
-        property_override_dual("ro.build.fingerprint", "ro.vendor.build.fingerprint", "Redmi/lmi/lmi:10/QKQ1.191117.002/V12.0.3.0.QJKMIXM:user/release-keys");
+        set_ro_build_prop("model", "Redmi K30 Pro");
+        set_ro_build_prop("device",  "lmi");
+        set_ro_build_prop("fingerprint", "Redmi/lmi/lmi:10/QKQ1.191117.002/V12.0.3.0.QJKMIXM:user/release-keys");
         property_override("ro.build.description", "lmi-user 10 QKQ1.191117.002 V12.0.3.0.QJKMIXM release-keys");
     }
 }
