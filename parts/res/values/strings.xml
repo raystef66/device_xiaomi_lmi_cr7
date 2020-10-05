@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-<<<<<<< HEAD
      Copyright (C) 2020 The LineageOS Project
-=======
-     Copyright (C) 2018 The LineageOS Project
->>>>>>> bea4fec7... raphael: parts: Introduce Dirac preferences
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -74,4 +70,9 @@
     <string name="dirac_preset_country">Country</string>
     <string name="dirac_preset_dance">Dance</string>
     <string name="dirac_preset_metal">Metal</string>
+
+    <!--  DT2W    -->
+    <string name="dt2w_enable_title">Double-Tap to Wake </string>
+    <string name="dt2w_enable_summary">Display boot in screen-off state by a double-tap</string>
+
 </resources>
