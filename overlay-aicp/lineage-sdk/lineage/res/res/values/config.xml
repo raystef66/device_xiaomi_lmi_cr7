@@ -59,4 +59,7 @@
 
     <!-- Whether device has a notch -->
     <bool name="config_haveNotch">false</bool>
+
+    <integer name="config_deviceLightCapabilities">232</integer>
+
 </resources>
