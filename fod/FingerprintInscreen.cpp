@@ -36,7 +36,7 @@
 #define FOD_SENSOR_Y 1732
 #define FOD_SENSOR_SIZE 202
 
-#define BRIGHTNESS_PATH "/sys/class/backlight/panel0-backlight/brightness_clone"
+#define BRIGHTNESS_PATH "/sys/class/backlight/panel0-backlight/brightness"
 
 namespace vendor {
 namespace lineage {
