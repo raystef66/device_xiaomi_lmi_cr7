@@ -16,6 +16,7 @@
 
 import common
 import re
+import os
 
 def FullOTA_InstallEnd(info):
   OTA_InstallEnd(info)
@@ -37,3 +38,30 @@ def OTA_InstallEnd(info):
   AddImage(info, "vbmeta.img", "/dev/block/bootdevice/by-name/vbmeta")
   AddImage(info, "vbmeta_system.img", "/dev/block/bootdevice/by-name/vbmeta_system")
   return
+
+USERIMAGE_PARTITIONS = [
+    "product",
+]
+
+def GetUserImages(input_tmp, input_zip):
+  return {partition: common.GetUserImage(partition, input_tmp, input_zip)
+          for partition in USERIMAGE_PARTITIONS
+          if os.path.exists(os.path.join(input_tmp,
+                                         "IMAGES", partition + ".img"))}
+
+def FullOTA_GetBlockDifferences(info):
+  images = GetUserImages(info.input_tmp, info.input_zip)
+  return [common.BlockDifference(partition, image)
+          for partition, image in images.items()]
+
+def IncrementalOTA_GetBlockDifferences(info):
+  source_images = GetUserImages(info.source_tmp, info.source_zip)
+  target_images = GetUserImages(info.target_tmp, info.target_zip)
+
+  # Use EmptyImage() as a placeholder for partitions that will be deleted.
+  for partition in source_images:
+    target_images.setdefault(partition, common.EmptyImage())
+
+  # Use source_images.get() because new partitions are not in source_images.
+  return [common.BlockDifference(partition, target_image, source_images.get(partition))
+          for partition, target_image in target_images.items()]
