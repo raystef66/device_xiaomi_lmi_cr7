@@ -5,9 +5,9 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/aosip_lmi.mk
+    $(LOCAL_DIR)/potato_lmi.mk
 
 COMMON_LUNCH_CHOICES := \
-    aosip_lmi-user \
-    aosip_lmi-userdebug \
-    aosip_lmi-eng
+    potato_lmi-user \
+    potato_lmi-userdebug \
+    potato_lmi-eng
