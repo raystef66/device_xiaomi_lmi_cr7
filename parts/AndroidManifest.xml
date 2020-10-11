@@ -23,6 +23,9 @@
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
+    <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS" />
 
     <protected-broadcast android:name="com.android.systemui.doze.pulse" />
 
@@ -47,6 +50,11 @@
 
         <service android:name=".popupcamera.PopupCameraService"
                  android:permission="PopupCameraService">
+        </service>
+
+        <service
+            android:name=".fod.FodService"
+            android:permission="FodService">
         </service>
 
         <activity
