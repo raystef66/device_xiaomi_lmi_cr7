@@ -5,9 +5,9 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/potato_lmi.mk
+    $(LOCAL_DIR)/aicp_lmi.mk
 
 COMMON_LUNCH_CHOICES := \
-    potato_lmi-user \
-    potato_lmi-userdebug \
-    potato_lmi-eng
+    aicp_lmi-user \
+    aicp_lmi-userdebug \
+    aicp_lmi-eng

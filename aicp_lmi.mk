@@ -6,11 +6,11 @@
 
 $(call inherit-product, device/xiaomi/lmi/device.mk)
 
-# Inherit some common potato stuff.
-$(call inherit-product, vendor/potato/config/common_full_phone.mk)
+# Inherit some common aicp stuff.
+$(call inherit-product, vendor/aicp/config/common_full_phone.mk)
 
 # Device identifier. This must come after all inclusions.
-PRODUCT_NAME := potato_lmi
+PRODUCT_NAME := aicp_lmi
 PRODUCT_DEVICE := lmi
 PRODUCT_BRAND := POCO
 PRODUCT_MODEL := F2 Pro
