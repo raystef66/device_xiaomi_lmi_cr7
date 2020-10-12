@@ -73,6 +73,10 @@
         <item>255</item>
     </integer-array>
 
+    <!-- Minimum screen brightness setting allowed by the power manager.
+         The user is forbidden from setting the brightness below this level. -->
+    <integer name="config_screenBrightnessSettingMinimum">2</integer>
+
     <!-- An array of floats describing the screen brightness in nits corresponding to the backlight
          values in the config_screenBrightnessBacklight array.  On OLED displays these  values
          should be measured with an all white image while the display is in the fully on state.
@@ -350,7 +354,7 @@
     
      <!-- Flag indicating whether the we should enable the automatic brightness in Settings.
          Software implementation will be used if config_hardware_auto_brightness_available is not set -->
-     <bool name="config_automatic_brightness_available">false</bool>
+     <bool name="config_automatic_brightness_available">true</bool>
 
     
     <!-- Power Management: Specifies whether to decouple the interactive state of the
