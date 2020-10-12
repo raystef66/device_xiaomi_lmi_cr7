@@ -154,6 +154,9 @@ TARGET_USES_PREBUILT_DYNAMIC_PARTITIONS := true
 TARGET_PRODUCT_PROP += $(DEVICE_PATH)/product.prop
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
 
+# Power
+TARGET_TAP_TO_WAKE_EVENT_NODE := "/dev/input/event3"
+
 # Recovery
 TARGET_NO_RECOVERY := false
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.qcom

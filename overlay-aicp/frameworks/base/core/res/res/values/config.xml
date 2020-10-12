@@ -20,4 +20,7 @@
     <!-- Full screen aspect ratio -->
     <bool name="config_haveHigherAspectRatioScreen">true</bool>
 
+    <!-- Gestures' key codes. If the gesture is not supported set it to 0. -->
+    <integer name="config_doubleTapKeyCode">354</integer>
+
 </resources>
