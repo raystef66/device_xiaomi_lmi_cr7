@@ -31,9 +31,9 @@
 #define Touch_Fod_Enable 10
 #define Touch_Aod_Enable 11
 
-#define FOD_SENSOR_X 543
-#define FOD_SENSOR_Y 1732
-#define FOD_SENSOR_SIZE 202
+#define FOD_SENSOR_X 445
+#define FOD_SENSOR_Y 1931
+#define FOD_SENSOR_SIZE 190
 
 #define BRIGHTNESS_PATH "/sys/class/backlight/panel0-backlight/brightness"
 
