@@ -21,7 +21,6 @@
 #include <android-base/logging.h>
 #include <hardware_legacy/power.h>
 
-#include <cmath>
 #include <fstream>
 
 #define COMMAND_NIT 10
