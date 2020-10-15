@@ -29,5 +29,8 @@
 
     <!-- Doze: check proximity sensor before pulsing? -->
     <bool name="doze_proximity_check_before_pulse">false</bool>
+
+    <!-- The CPU temperature divider, if needed -->
+    <integer name="config_cpuTempDivider" translatable="false">1000</integer>
 </resources>
 
