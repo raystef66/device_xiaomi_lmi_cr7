@@ -80,14 +80,14 @@ void vendor_load_properties() {
     region = GetProperty("ro.boot.hwc", "GLOBAL");
 
     if (region == "GLOBAL") {
-        set_ro_product_prop("model", "Pocophone F2 Pro");
+        set_ro_product_prop("model", "POCO F2 Pro");
         set_ro_product_prop("device", "lmi");
-        set_ro_build_prop("fingerprint", "Redmi/lmi/lmi:10/QKQ1.191117.002/V12.0.3.0.QJKMIXM:user/release-keys");
+        set_ro_build_prop("fingerprint", "google/coral/coral:11/RP1A.201005.004/6782484:user/release-keys");
         property_override("ro.build.description", "lmi-user 10 QKQ1.191117.002 V12.0.3.0.QJKMIXM release-keys");
     } else if (region == "CN") {
         set_ro_build_prop("model", "Redmi K30 Pro");
         set_ro_build_prop("device",  "lmi");
-        set_ro_build_prop("fingerprint", "Redmi/lmi/lmi:10/QKQ1.191117.002/V12.0.3.0.QJKMIXM:user/release-keys");
+        set_ro_build_prop("fingerprint", "google/coral/coral:11/RP1A.201005.004/6782484:user/release-keys");
         property_override("ro.build.description", "lmi-user 10 QKQ1.191117.002 V12.0.3.0.QJKMIXM release-keys");
     }
 }
