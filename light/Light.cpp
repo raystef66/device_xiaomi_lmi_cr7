@@ -16,8 +16,10 @@
 
 #define LOG_TAG "light"
 
-#define DIM_ALPHA_PATH "sys/class/drm/card0-DSI-1/dim_alpha"
+#define BRIGHTNESS_PATH "/sys/class/backlight/panel0-backlight/brightness"
 #define MAXIMUM_DISPLAY_BRIGHTNESS 2047
+#define DISPPARAM_PATH "/sys/devices/platform/soc/ae00000.qcom,mdss_mdp/drm/card0/card0-DSI-1/disp_param"
+#define DISPPARAM_HBM_FOD_OFF "0xE0000"
 
 #include <log/log.h>
 
@@ -77,10 +79,11 @@ Return<Status> Light::setLight(Type type, const LightState& state)  {
 
     // Scale display brightness.
     if (type == Type::BACKLIGHT) {
-        legacyState.color = (state.color & 0xFF) * MAXIMUM_DISPLAY_BRIGHTNESS / 0xFF;
-        float alpha = 1.0 - pow(legacyState.color / 2047.0 * 430.0 / 600.0, 0.455);
-        int dim_alpha = alpha * 255;
-        set(DIM_ALPHA_PATH, dim_alpha);
+	int realBrightness = get(BRIGHTNESS_PATH, 0);
+        float alpha = 1.0 - pow(realBrightness / 2047.0 * 430.0 / 600.0, 0.455);
+        int brightness_path = alpha * 255;
+        set(BRIGHTNESS_PATH, brightness_path);
+	set(DISPPARAM_PATH, DISPPARAM_HBM_FOD_OFF);
     }
 
     int ret = hwLight->set_light(hwLight, &legacyState);
