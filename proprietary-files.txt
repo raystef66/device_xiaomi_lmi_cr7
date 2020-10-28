@@ -16,7 +16,6 @@ media/audio/ui/popup_yingyan_up.ogg
 -lib/libantradio.so
 -lib64/libantradio.so
 -priv-app/WfdService/WfdService.apk
--product/app/QtiTelephonyService/QtiTelephonyService.apk
 -product/app/datastatusnotification/datastatusnotification.apk
 -product/app/embms/embms.apk
 -product/app/uceShimService/uceShimService.apk
@@ -142,7 +141,6 @@ product/etc/permissions/qcrilhook.xml
 product/etc/permissions/telephonyservice.xml
 product/etc/permissions/vendor.qti.hardware.data.connection-V1.0-java.xml
 product/etc/permissions/vendor.qti.hardware.data.connection-V1.1-java.xml
-product/framework/QtiTelephonyServicelibrary.jar
 product/framework/com.qti.dpmframework.jar
 product/framework/com.qualcomm.qti.imscmservice-V2.0-java.jar
 product/framework/com.qualcomm.qti.imscmservice-V2.1-java.jar
@@ -303,12 +301,10 @@ etc/permissions/privapp-permissions-qti.xml
 etc/permissions/qti_libpermissions.xml|445f784e5cf0a21717dadb36a3f17af75a3af02f
 etc/permissions/qti_permissions.xml
 etc/sysconfig/qti_whitelist.xml
--product/app/QtiTelephonyService/QtiTelephonyService.apk
 -product/app/atfwd/atfwd.apk
 product/etc/permissions/qcrilhook.xml
 product/etc/permissions/telephony_product_privapp-permissions-qti.xml
 product/etc/permissions/telephonyservice.xml
-product/framework/QtiTelephonyServicelibrary.jar
 product/framework/qcrilhook.jar
 -product/priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
 
