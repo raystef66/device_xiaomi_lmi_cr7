@@ -33,6 +33,7 @@ ro.displayfeature.histogram.enable
 ro.hist.brightness.threshold=7 
 vendor.display.use_smooth_motion=1
 ro.vendor.dfps.enable=true
+ro.surface_flinger.supports_background_blur=1
 
 # CNE
 persist.vendor.cne.feature=1
