@@ -39,7 +39,10 @@
 #include "vendor_init.h"
 
 using android::base::GetProperty;
-using android::init::property_set;
+
+int property_set(const char *key, const char *value) {
+    return __system_property_set(key, value);
+}
 
 constexpr const char *RO_PROP_SOURCES[] = {
     nullptr,   "product.", "product_services.", "odm.",
