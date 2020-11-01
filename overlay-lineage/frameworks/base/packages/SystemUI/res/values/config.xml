@@ -32,5 +32,9 @@
 
     <!-- The CPU temperature divider, if needed -->
     <integer name="config_cpuTempDivider" translatable="false">1000</integer>
+
+    <!-- Max visible notification icons --> 
+    <integer name="config_maxVisibleNotificationIcons">7</integer> 
+    <integer name="config_maxVisibleNotificationIconsWhenDark">8</integer>
 </resources>
 
