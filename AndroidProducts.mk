@@ -5,9 +5,9 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/aicp_lmi.mk
+    $(LOCAL_DIR)/lineage_lmi.mk
 
 COMMON_LUNCH_CHOICES := \
-    aicp_lmi-user \
-    aicp_lmi-userdebug \
-    aicp_lmi-eng
+    lineage_lmi-user \
+    lineage_lmi-userdebug \
+    lineage_lmi-eng
