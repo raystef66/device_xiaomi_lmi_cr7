@@ -5,5 +5,5 @@ hidl_package_root {
 
 hidl_package_root {
     name: "vendor.goodix",
-    path: "device/xiaomi/common/interfaces",
+    path: "device/xiaomi/lmi/interfaces",
 }
