@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 The LineageOS Project
+ * Copyright (C) 2019-2020 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,7 +38,7 @@ using ::vendor::xiaomi::hardware::fingerprintextension::V1_0::IXiaomiFingerprint
 using ::vendor::xiaomi::hardware::touchfeature::V1_0::ITouchFeature;
 
 class FingerprintInscreen : public IFingerprintInscreen {
-  public:
+public:
     FingerprintInscreen();
     Return<int32_t> getPositionX() override;
     Return<int32_t> getPositionY() override;
@@ -56,9 +56,9 @@ class FingerprintInscreen : public IFingerprintInscreen {
     Return<bool> shouldBoostBrightness() override;
     Return<void> setCallback(const sp<IFingerprintInscreenCallback>& callback) override;
 
-  private:
-    sp<ITouchFeature> TouchFeatureService;
+private:
     sp<IDisplayFeature> xiaomiDisplayFeatureService;
+    sp<ITouchFeature> touchFeatureService;
     sp<IXiaomiFingerprint> xiaomiFingerprintService;
 };
 
@@ -71,3 +71,4 @@ class FingerprintInscreen : public IFingerprintInscreen {
 }  // namespace vendor
 
 #endif  // VENDOR_LINEAGE_BIOMETRICS_FINGERPRINT_INSCREEN_V1_0_FINGERPRINTINSCREEN_H
+
