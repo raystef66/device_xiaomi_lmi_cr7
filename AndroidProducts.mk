@@ -5,9 +5,9 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/aicp_lmi.mk
+    $(LOCAL_DIR)/derp_lmi.mk
 
 COMMON_LUNCH_CHOICES := \
-    aicp_lmi-user \
-    aicp_lmi-userdebug \
-    aicp_lmi-eng
+    derp_lmi-user \
+    derp_lmi-userdebug \
+    derp_lmi-eng
