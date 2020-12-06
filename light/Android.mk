@@ -1,7 +1,7 @@
 LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE := android.hardware.light@2.0-impl.xiaomi_kona
+LOCAL_MODULE := android.hardware.light@2.0-impl.kona
 LOCAL_MODULE_PATH_32 := $(TARGET_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/lib
 LOCAL_MODULE_PATH_64 := $(TARGET_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/lib64
 LOCAL_MODULE_RELATIVE_PATH := hw
@@ -13,9 +13,9 @@ LOCAL_SHARED_LIBRARIES := \
         libbase \
         liblog \
         libhidlbase \
-        libhidltransport \
         libhardware \
         libutils \
         android.hardware.light@2.0
 
 include $(BUILD_SHARED_LIBRARY)
+

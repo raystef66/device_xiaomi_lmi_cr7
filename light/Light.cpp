@@ -189,3 +189,4 @@ ILight* HIDL_FETCH_ILight(const char* /* name */) {
 }  // namespace light
 }  // namespace hardware
 }  // namespace android
+
