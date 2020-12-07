@@ -1,0 +1,34 @@
+type hal_fod_lmi, coredomain, domain;
+hal_server_domain(hal_fod_lmi, hal_lineage_fod)
+
+type hal_fod_lmi_exec, exec_type, system_file_type, file_type;
+init_daemon_domain(hal_fod_lmi)
+
+# Allow binder communication with hal_displayfeature_xiaomi_default
+binder_call(hal_fod_lmi, hal_displayfeature_xiaomi_default)
+
+# Allow hal_fod_lmi to find hal_displayfeature_xiaomi_hwservice
+allow hal_fod_lmi hal_displayfeature_xiaomi_hwservice:hwservice_manager find;
+
+# Allow binder communication with hal_touchfeature_xiaomi_default
+binder_call(hal_fod_lmi, hal_touchfeature_xiaomi_default)
+
+# Allow hal_fod_lmi to find hal_displayfeature_xiaomi_hwservice
+allow hal_fod_lmi hal_touchfeature_xiaomi_hwservice:hwservice_manager find;
+
+# Allow hal_fod_lmi to find hal_fingerprint_hwservice_xiaomi
+allow hal_fod_lmi hal_fingerprint_hwservice_xiaomi:hwservice_manager find;
+
+# Allow hal_fod_lmi to write to fod sysfs
+allow hal_fod_lmi sysfs_tp_fodstatus:file rw_file_perms;
+
+# Allow access to the hals
+hal_client_domain(hal_fod_lmi, hal_fingerprint)
+
+# Allow to use wakelock
+wakelock_use(hal_fod_lmi)
+
+# Allow hal_fod_lmi to write to disp param
+allow hal_fod_lmi sysfs_graphics:file {read write getattr open};
+allow hal_fod_lmi sysfs_graphics:dir {search};
+allow hal_fod_lmi sysfs_graphics:lnk_file {read}

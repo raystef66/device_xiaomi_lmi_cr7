@@ -1,0 +1,7 @@
+allow init system_file:file { execute_no_trans };
+allow init hwservicemanager:binder { call };
+allow init hal_touchfeature_xiaomi_default:binder { call };
+allow init hal_displayfeature_xiaomi_default:binder { call };
+allow init vendor_sysfs_graphics:file { read };
+allow init vendor_sysfs_graphics:file { open };
+allow init system_suspend:binder { call };
