@@ -1,5 +1,1 @@
-type hal_fod_lmi, coredomain, domain;
-hal_server_domain(hal_fod_lmi, hal_lineage_fod)
-
-type hal_fod_lmi_exec, exec_type, file_type;
-init_daemon_domain(hal_fod_lmi)
+type hal_fod_lmi_exec, exec_type, system_file_type, file_type;

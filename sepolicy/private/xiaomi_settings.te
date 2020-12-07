@@ -1,0 +1,3 @@
+type xiaomi_settings, domain;
+
+app_domain(xiaomi_settings)
