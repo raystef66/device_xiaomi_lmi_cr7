@@ -1,0 +1,3 @@
+allow gmscore_app hal_memtrack_default:binder { call };
+allow gmscore_app hal_memtrack_default:binder { call };
+allow gmscore_app hal_memtrack_default:binder { call };

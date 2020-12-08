@@ -39,6 +39,7 @@ binder_call(xiaomi_settings, hal_motor_default)
 
 # Allow binder communication with gpuservice
 binder_call(xiaomi_settings, gpuservice)
+allow xiaomi_settings gpuservice:binder { call };
 
 # Allow xiaomi_settings to read and write to cgroup
 allow xiaomi_settings cgroup:file rw_file_perms;
@@ -50,3 +51,27 @@ allow xiaomi_settings sysfs_graphics:file rw_file_perms;
 # Allow xiaomi_settings to read and write to sysfs_leds
 allow xiaomi_settings sysfs_leds:dir search;
 allow xiaomi_settings sysfs_leds:file rw_file_perms;
+
+# Allow xiaomi_settings binder to call hal_motor
+allow xiaomi_settings hal_motor_default:binder { call };
+
+# Allow xiaomi_settings to turn sysfs_leds
+allow xiaomi_settings sysfs_leds:dir { search };
+
+# Allow xiaomi_settings to turn vendor sysfs_graphics
+allow xiaomi_settings vendor_sysfs_graphics:dir { search };
+allow xiaomi_settings vendor_sysfs_graphics:file { write };
+allow xiaomi_settings vendor_sysfs_graphics:file { open };
+allow xiaomi_settings vendor_sysfs_graphics:file { getattr };
+
+# Allow xiaomi_settings to system app_data_file
+allow xiaomi_settings system_app_data_file:dir { search };
+allow xiaomi_settings system_app_data_file:dir { write };
+allow xiaomi_settings system_app_data_file:dir { remove_name };
+allow xiaomi_settings system_app_data_file:file { rename };
+allow xiaomi_settings system_app_data_file:file { setattr };
+allow xiaomi_settings system_app_data_file:file { unlink };
+
+
+
+
