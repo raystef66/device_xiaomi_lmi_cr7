@@ -29,7 +29,7 @@
 
         <!-- The maximum range of gamma adjustment possible using the screen
          auto-brightness adjustment setting. -->
-     <fraction name="config_autoBrightnessAdjustmentMaxGamma">300.0%</fraction>
+     <fraction name="config_autoBrightnessAdjustmentMaxGamma">100.0%</fraction>
      
          <!-- User activity timeout: Maximum screen dim duration as a percentage of screen off timeout.
     
@@ -52,7 +52,7 @@
     <!-- Screen brightness used to dim the screen when the user activity
          timeout expires.  May be less than the minimum allowed brightness setting
          that can be set by the user. -->
-    <integer name="config_screenBrightnessDim">10</integer>
+    <integer name="config_screenBrightnessDim">6</integer>
 
     <!-- Screen brightness used to dim the screen while dozing in a very low power state.
          May be less than the minimum allowed brightness setting
@@ -75,7 +75,7 @@
 
     <!-- Minimum screen brightness setting allowed by the power manager.
          The user is forbidden from setting the brightness below this level. -->
-    <integer name="config_screenBrightnessSettingMinimum">2</integer>
+    <integer name="config_screenBrightnessSettingMinimum">1</integer>
 
     <!-- An array of floats describing the screen brightness in nits corresponding to the backlight
          values in the config_screenBrightnessBacklight array.  On OLED displays these  values
@@ -84,7 +84,7 @@
          brightness modes but only the maximum brightness value obtainable in a sustainable manner.
          This array should be equal in size to config_screenBrightnessBacklight -->
     <array name="config_screenBrightnessNits">
-        <item>2.0</item>
+        <item>1.68</item>
         <item>500.0</item>
     </array>
 
@@ -509,10 +509,10 @@
         <item>302</item>
         <item>313</item>
         <item>386</item>
-        <item>450</item>
-        <item>464</item>
-        <item>485</item>
-        <item>500</item>
+        <item>430</item>
+        <item>434</item>
+        <item>445</item>
+        <item>455</item>
     </array>
     
     <!-- Power Management: Specifies whether to decouple the interactive state of the
