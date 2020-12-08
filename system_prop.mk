@@ -74,6 +74,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.ssr.restart_level=ALL_ENABLE
 
+# Use Vulkan backend for Skia UI rendering
+PRODUCT_PRODUCT_PROPERTIES += \
+    debug.hwui.renderer=skiavk
+
 # Vendor
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.qti.va_aosp.support=1
