@@ -2,3 +2,5 @@ allow platform_app rild:binder { call };
 allow platform_app init:binder { call };
 allow platform_app vendor_hal_gnss_qti:binder { call };
 
+allow platform_app nfc_service:service_manager { find };
+allow platform_app sysfs_graphics:dir search;
