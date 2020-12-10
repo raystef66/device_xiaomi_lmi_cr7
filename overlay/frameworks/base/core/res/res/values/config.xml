@@ -553,10 +553,7 @@
     <!-- Smart replies in notifications: Whether we disable the feature unless the app targets P -->
     <bool name="config_smart_replies_in_notifications_requires_targeting_p">false</bool>
 
-    <!-- Whether device supports double tap to wake -->
-    <bool name="config_supportDoubleTapWake">true</bool>
-
-    <!-- Whether notify fingerprint client of successful cancelled authentication -->
+     <!-- Whether notify fingerprint client of successful cancelled authentication -->
     <bool name="config_notifyClientOnFingerprintCancelSuccess">true</bool>
  
     <!-- List of biometric sensors on the device, in decreasing strength. Consumed by AuthService

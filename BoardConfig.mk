@@ -158,9 +158,6 @@ TARGET_COPY_OUT_SYSTEM_EXT := system_ext
 TARGET_COPY_OUT_VENDOR := vendor
 # TARGET_USES_PREBUILT_DYNAMIC_PARTITIONS := true
 
-# Power
-TARGET_TAP_TO_WAKE_NODE := "/dev/input/event3"
-
 # Properties
 TARGET_PRODUCT_PROP += $(DEVICE_PATH)/product.prop
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
