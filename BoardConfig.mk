@@ -164,6 +164,7 @@ TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
 
 # Power
 TARGET_TAP_TO_WAKE_EVENT_NODE := "/dev/input/event3"
+TARGET_USES_INTERACTION_BOOST := true
 
 # Recovery
 TARGET_NO_RECOVERY := false
