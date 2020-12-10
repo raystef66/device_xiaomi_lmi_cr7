@@ -16,6 +16,7 @@ ro.bluetooth.library_name=libbluetooth_qti.so
 camera.disable_zsl_mode=true
 
 # Display
+ro.sf.lcd_density=440
 debug.gralloc.gfx_ubwc_disable=0
 debug.sf.enable_hwc_vds=1
 debug.sf.latch_unsignaled=1
