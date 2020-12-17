@@ -46,13 +46,8 @@ extern "C" {
 #define MSMDCVS_GOVERNOR "msm-dcvs"
 #define SCHEDUTIL_GOVERNOR "schedutil"
 
-#define INPUT_EVENT_WAKUP_MODE_OFF 4
-#define INPUT_EVENT_WAKUP_MODE_ON 5
-
 #define HINT_HANDLED (0)
 #define HINT_NONE (-1)
-
-#define CHECK_HANDLE(x) ((x) > 0)
 
 #include <hardware/power.h>
 

@@ -50,16 +50,14 @@ char scaling_gov_path[4][80] ={
     "sys/devices/system/cpu/cpu3/cpufreq/scaling_governor"
 };
 
-#define USINSEC 1000000L
-#define NSINUS 1000L
-
 #define PERF_HAL_PATH "libqti-perfd-client.so"
 static void *qcopt_handle;
-static int (*perf_lock_acq)(unsigned long handle, int duration,
+static int (*perf_lock_acq)(int handle, int duration,
     int list[], int numArgs);
-static int (*perf_lock_rel)(unsigned long handle);
-static int (*perf_hint)(int, char *, int, int);
+static int (*perf_lock_rel)(int handle);
+static int (*perf_hint)(int, const char *, int, int);
 static struct list_node active_hint_list_head;
+const char *pkg = "QTI PowerHAL";
 
 static void *get_qcopt_handle()
 {
@@ -217,7 +215,7 @@ void interaction(int duration, int num_args, int opt_list[])
 #ifdef INTERACTION_BOOST
     static int lock_handle = 0;
 
-    if (duration < 0 || num_args < 1 || opt_list[0] == NULL)
+    if (duration < 0 || num_args < 1 || opt_list[0] == 0)
         return;
 
     if (qcopt_handle) {
@@ -232,7 +230,7 @@ void interaction(int duration, int num_args, int opt_list[])
 
 int interaction_with_handle(int lock_handle, int duration, int num_args, int opt_list[])
 {
-    if (duration < 0 || num_args < 1 || opt_list[0] == NULL)
+    if (duration < 0 || num_args < 1 || opt_list[0] == 0)
         return 0;
 
     if (qcopt_handle) {
@@ -256,7 +254,7 @@ int perf_hint_enable(int hint_id , int duration)
 
     if (qcopt_handle) {
         if (perf_hint) {
-            lock_handle = perf_hint(hint_id, NULL, duration, -1);
+            lock_handle = perf_hint(hint_id, pkg, duration, -1);
             if (lock_handle == -1)
                 ALOGE("Failed to acquire lock for hint_id: %X.", hint_id);
         }
@@ -264,18 +262,6 @@ int perf_hint_enable(int hint_id , int duration)
     return lock_handle;
 }
 
-// same as perf_hint_enable, but with the ability to choose the type
-int perf_hint_enable_with_type(int hint_id, int duration, int type) {
-    int lock_handle = 0;
-
-    if (qcopt_handle) {
-        if (perf_hint) {
-            lock_handle = perf_hint(hint_id, NULL, duration, type);
-            if (lock_handle == -1) ALOGE("Failed to acquire lock.");
-        }
-    }
-    return lock_handle;
-}
 
 void release_request(int lock_handle) {
     if (qcopt_handle && perf_lock_rel)
@@ -374,11 +360,4 @@ void undo_initial_hint_action()
             perf_lock_rel(1);
         }
     }
-}
-
-long long calc_timespan_us(struct timespec start, struct timespec end) {
-    long long diff_in_us = 0;
-    diff_in_us += (end.tv_sec - start.tv_sec) * USINSEC;
-    diff_in_us += (end.tv_nsec - start.tv_nsec) / NSINUS;
-    return diff_in_us;
 }
