@@ -39,6 +39,7 @@
 #include <android-base/logging.h>
 #include <android/binder_manager.h>
 #include <android/binder_process.h>
+#include <linux/input.h>
 
 using ::aidl::android::hardware::power::BnPower;
 using ::aidl::android::hardware::power::IPower;
@@ -47,6 +48,10 @@ using ::aidl::android::hardware::power::Boost;
 
 using ::ndk::ScopedAStatus;
 using ::ndk::SharedRefBase;
+
+constexpr char kWakeupEventNode[] = "/dev/input/event4";
+constexpr int kWakeupModeOff = 4;
+constexpr int kWakeupModeOn = 5;
 
 namespace aidl {
 namespace android {
@@ -62,9 +67,15 @@ ndk::ScopedAStatus Power::setMode(Mode type, bool enabled) {
     LOG(INFO) << "Power setMode: " << static_cast<int32_t>(type) << " to: " << enabled;
     switch(type){
         case Mode::DOUBLE_TAP_TO_WAKE:
-            ::android::base::WriteStringToFile(enabled ? "1" : "0",
-                                               "/proc/touchpanel/double_tap_enable", true);
-            break;
+            {
+            int fd = open(kWakeupEventNode, O_RDWR);
+            struct input_event ev;
+            ev.type = EV_SYN;
+            ev.code = SYN_CONFIG;
+            ev.value = enabled ? kWakeupModeOn : kWakeupModeOff;
+            write(fd, &ev, sizeof(ev));
+            close(fd);
+           } break;
         case Mode::LOW_POWER:
         case Mode::LAUNCH:
         case Mode::EXPENSIVE_RENDERING:
