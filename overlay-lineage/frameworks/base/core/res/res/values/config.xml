@@ -33,6 +33,6 @@
     <integer name="config_defaultLiveDisplayMode">0</integer>
 
     <!-- Flag specifying whether pocked mode is available on device -->
-    <bool name="config_pocketModeSupported">false</bool>
+    <bool name="config_pocketModeSupported">true</bool>
 
 </resources>
