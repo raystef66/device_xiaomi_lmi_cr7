@@ -13,6 +13,9 @@ system_ext/etc/permissions/audiosphere.xml
 #product/lib64/libaptX_encoder.so
 #product/lib64/libaptXHD_encoder.so
 
+# Bluetooth (aptX) - from crosshatch - RQ1A.201205.003
+system_ext/lib64/libaptX_encoder.so|df1c89d7af1bb35808d5fe3496b04ba066c10cbc
+system_ext/lib64/libaptXHD_encoder.so|e13fa70c97caaa24d061678bdee608eb8850a69e
 
 # CNE
 product/etc/permissions/vendor.qti.hardware.data.connection-V1.0-java.xml
