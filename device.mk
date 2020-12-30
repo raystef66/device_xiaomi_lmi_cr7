@@ -31,9 +31,7 @@ PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
 # ANT+
 PRODUCT_PACKAGES += \
-    AntHalService \
-    antradio_app \
-    libantradio
+    AntHalService
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -200,6 +198,17 @@ BOARD_BUILD_PRODUCT_IMAGE := true
 # Thermal
 PRODUCT_PACKAGES += \
     android.hardware.thermal@2.0
+
+# WiFi Display
+PRODUCT_PACKAGES += \
+    libdisplayconfig.vendor \
+    libnl \
+    libqdMetaData \
+    libqdMetaData.system \
+    libqdMetaData.vendor
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/privapp-permissions-wfd.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-wfd.xml
 
 # WiFi Tethering
 PRODUCT_PACKAGES += \
