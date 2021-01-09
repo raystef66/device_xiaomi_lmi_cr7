@@ -49,10 +49,44 @@ using ::aidl::android::hardware::power::Boost;
 using ::ndk::ScopedAStatus;
 using ::ndk::SharedRefBase;
 
-constexpr char kWakeupEventNode[] = "/dev/input/event4";
 constexpr int kWakeupModeOff = 4;
 constexpr int kWakeupModeOn = 5;
 
+namespace {
+
+int open_ts_input() {
+    int fd = -1;
+    DIR *dir = opendir("/dev/input");
+
+    if (dir != NULL) {
+        struct dirent *ent;
+
+        while ((ent = readdir(dir)) != NULL) {
+            if (ent->d_type == DT_CHR) {
+                char absolute_path[PATH_MAX] = {0};
+                char name[80] = {0};
+
+                strcpy(absolute_path, "/dev/input/");
+                strcat(absolute_path, ent->d_name);
+
+                fd = open(absolute_path, O_RDWR);
+                if (ioctl(fd, EVIOCGNAME(sizeof(name) - 1), &name) > 0) {
+                    if (strcmp(name, "fts_ts") == 0 ||
+                            strcmp(name, "NVTCapacitiveTouchScreen") == 0)
+                        break;
+                }
+
+                close(fd);
+                fd = -1;
+            }
+        }
+
+        closedir(dir);
+    }
+
+    return fd;
+}
+}
 namespace aidl {
 namespace android {
 namespace hardware {
@@ -68,7 +102,7 @@ ndk::ScopedAStatus Power::setMode(Mode type, bool enabled) {
     switch(type){
         case Mode::DOUBLE_TAP_TO_WAKE:
             {
-            int fd = open(kWakeupEventNode, O_RDWR);
+            int fd = open_ts_input();
             struct input_event ev;
             ev.type = EV_SYN;
             ev.code = SYN_CONFIG;
