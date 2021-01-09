@@ -118,12 +118,10 @@ PRODUCT_BOOT_JARS += \
 PRODUCT_PACKAGES += \
     init.qcom.rc \
     init.recovery.qcom.rc \
-    quantic-optimization.rc \
-    dt2w.rc
+    quantic-optimization.rc
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/bin/init.quantic.postboot.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/init.quantic.postboot.sh \
-    $(LOCAL_PATH)/rootdir/bin/init.dt2w.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/init.dt2w.sh
+    $(LOCAL_PATH)/rootdir/bin/init.quantic.postboot.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/init.quantic.postboot.sh
 
 # Light
 PRODUCT_PACKAGES += \
