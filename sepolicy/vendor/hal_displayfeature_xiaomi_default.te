@@ -1,1 +1,0 @@
-allow hal_displayfeature_xiaomi_default sysfs_graphics:dir { search };

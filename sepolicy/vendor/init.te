@@ -1,11 +1,5 @@
 allow init system_file:file { execute_no_trans };
 allow init hwservicemanager:binder { call };
-allow init hal_touchfeature_xiaomi_default:binder { call };
-allow init hal_displayfeature_xiaomi_default:binder { call };
-allow init vendor_sysfs_graphics:file { read };
-allow init vendor_sysfs_graphics:file { open };
-allow init vendor_sysfs_graphics:file { write };
-allow init system_suspend:binder { call };
 allow init sysfs_graphics:lnk_file { read };
 allow init self:netlink_route_socket { read };
 allow init netutils_wrapper_exec:file { execute };

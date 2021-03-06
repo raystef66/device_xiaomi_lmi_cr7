@@ -34,6 +34,7 @@
 #define FOD_SENSOR_Y 1655
 #define FOD_SENSOR_SIZE 202
 
+
 #define BRIGHTNESS_PATH "/sys/class/backlight/panel0-backlight/brightness"
 
 namespace vendor {
@@ -43,7 +44,7 @@ namespace fingerprint {
 namespace inscreen {
 namespace V1_0 {
 namespace implementation {
-
+    
 template <typename T>
 static T get(const std::string& path, const T& def) {
     std::ifstream file(path);
@@ -74,16 +75,16 @@ Return<int32_t> FingerprintInscreen::getPositionY() {
 }
 
 Return<int32_t> FingerprintInscreen::getDimAmount(int32_t /* brightness */) {
-    int32_t alpha;
+     float alpha;
     int realBrightness = get(BRIGHTNESS_PATH, 0);
-    if (realBrightness > 9) {
-    alpha = (255 + ((-8.08071) * pow(realBrightness, 0.45)));
+
+    if (realBrightness > 500) {
+        alpha = 1.0 - pow(realBrightness / 2047.0 * 430.0 / 600.0, 0.455);
     } else {
-    alpha = (255 + ((-10.08071) * pow(realBrightness, 0.45)));
+        alpha = 1.0 - pow(realBrightness / 1680.0, 0.455);
     }
-    if(alpha < 0.82)
-    alpha+=0.1;
-    return alpha;
+    if(alpha < 0.82)alpha+=0.1;
+    return 255 * alpha;
 }
 
 Return<int32_t> FingerprintInscreen::getSize() {
