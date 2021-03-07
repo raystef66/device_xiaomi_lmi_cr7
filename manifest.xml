@@ -895,6 +895,16 @@
         </interface>
         <fqname>@3.0::ILocHidlGnss/gnss_vendor</fqname>
     </hal>
+    <hal format="hidl">
+        <name>vendor.qti.hardware.qccsyshal</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IQccsyshal</name>
+            <instance>qccsyshal</instance>
+        </interface>
+        <fqname>@1.0::IQccsyshal/qccsyshal</fqname>
+    </hal>
     <sepolicy>
         <version>29.0</version>
     </sepolicy>
