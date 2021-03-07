@@ -2,4 +2,5 @@ allow platform_app rild:binder { call };
 allow platform_app init:binder { call };
 
 allow platform_app nfc_service:service_manager { find };
-allow platform_app sysfs_graphics:dir search;
+allow platform_app sysfs_graphics:file r_file_perms;
+allow platform_app vendor_sysfs_graphics:file r_file_perms;
