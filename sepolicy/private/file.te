@@ -17,7 +17,7 @@ type sysfs_oem, sysfs_type, fs_type;
 type sysfs_tp_fodstatus, sysfs_type, fs_type;
 type sysfs_fod, sysfs_type, fs_type;
 type sysfs_kgsl, sysfs_type, fs_type;
+type sysfs_fps, sysfs_type, fs_type;
 
 # socket
 type pps_socket, file_type;
-
