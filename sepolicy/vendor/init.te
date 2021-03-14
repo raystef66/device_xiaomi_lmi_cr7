@@ -7,4 +7,3 @@ allow init netutils_wrapper_exec:file { execute_no_trans };
 allow init netutils_wrapper_exec:file { map };
 allow init netutils_wrapper_exec:file { getattr };
 allow init hal_fingerprint_default:binder { call };
-allow init sysfs_battery_supply:file { setattr };
