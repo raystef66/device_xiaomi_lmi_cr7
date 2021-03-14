@@ -47,6 +47,8 @@ dev.pm.dyn_samplingrate=1
 # DPM
 persist.vendor.dpm.feature=9
 
+# FACEUNLOCK
+vendor.camera.aux.packagelist=com.crdroid.faceunlock
 
 #FP
 ro.fingerprint.cleanup.unused=false
