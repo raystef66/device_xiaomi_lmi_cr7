@@ -118,11 +118,7 @@ PRODUCT_BOOT_JARS += \
 # Init scripts
 PRODUCT_PACKAGES += \
     init.qcom.rc \
-    init.recovery.qcom.rc \
-    quantic-optimization.rc
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/bin/init.quantic.postboot.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/init.quantic.postboot.sh
+    init.recovery.qcom.rc
 
 # Light
 PRODUCT_PACKAGES += \
