@@ -15,11 +15,22 @@ vendor.bluetooth.soc=cherokee
 # Camera
 camera.disable_zsl_mode=true
 
+# CNE and DPM
+persist.vendor.cne.feature=1
+persist.vendor.dpm.feature=1
+persist.vendor.dpm.loglevel=0
+persist.vendor.dpm.nsrm.bkg.evt=3955
+
 # Display
+persist.fod.modified.dc_status=false
+ro.eyecare.brightness.threshold=11
+ro.eyecare.brightness.level=5
+persist.displayfeature.dc_backlight.threshold=610
+persist.displayfeature.dc_backlight.enable=false
+ro.displayfeature.histogram.enable=true
+sys.displayfeature.hbm.enable=true
 ro.sf.lcd_density=440
 debug.gralloc.gfx_ubwc_disable=0
-debug.sf.enable_hwc_vds=1
-debug.sf.latch_unsignaled=1
 persist.vendor.color.matrix=2
 ro.vendor.display.default_fps=90
 ro.vendor.display.ad=1
@@ -34,18 +45,14 @@ ro.displayfeature.histogram.enable
 ro.hist.brightness.threshold=7 
 vendor.display.use_smooth_motion=1
 ro.vendor.dfps.enable=true
-ro.surface_flinger.supports_background_blur=1
-
-# CNE
-persist.vendor.cne.feature=1
 
 #DALVIK
 dalvik.vm.heapsize=36m
 dev.pm.dyn_samplingrate=1
 
-
-# DPM
-persist.vendor.dpm.feature=9
+# Enable blurs
+ro.surface_flinger.supports_background_blur=1
+ro.sf.blurs_are_expensive=1
 
 # FACEUNLOCK
 vendor.camera.aux.packagelist=com.crdroid.faceunlock
@@ -55,6 +62,12 @@ ro.fingerprint.cleanup.unused=false
 
 #GBoard
 ro.com.google.ime.kb_pad_port_b=1
+
+# Graphics
+debug.sf.disable_backpressure=1
+debug.sf.latch_unsignaled=1
+debug.sf.enable_hwc_vds=1
+debug.cpurend.vsync=false
 
 # IMS
 persist.dbg.volte_avail_ovr=1
@@ -66,14 +79,15 @@ vendor.iop.enable_prefetch_ofr=1
 vendor.iop.enable_uxe=0
 
 # Media
+media.stagefright.thumbnail.prefer_hw_codecs=true
 media.settings.xml=/system/etc/media_profiles_vendor.xml
+vendor.mm.enable.qcom_parser=63963135
 
 # Memory optimizations
 ro.vendor.qti.sys.fw.bservice_enable=true
 
 #Netflix custom property
-ro.netflix.bsp_rev=Q8250-19134-1
-
+ro.netflix.bsp_rev=Q845-05000-1
 # OpenGL
 debug.hwui.renderer=skiagl
 
@@ -81,9 +95,6 @@ debug.hwui.renderer=skiagl
 ro.vendor.qti.core_ctl_max_cpu=4
 ro.vendor.qti.core_ctl_min_cpu=2
 vendor.display.enable_async_powermode
-
-# Radio
-ro.telephony.default_network=33,22
 
 # Touchscreen
 persist.vendor.qti.inputopts.enable=true
@@ -93,10 +104,21 @@ persist.vendor.qti.inputopts.movetouchslop=0.6
 persist.vendor.data.iwlan.enable=true
 persist.vendor.data.mode=concurrent
 
+# RCS
+persist.rcs.supported=1
 
 #RIL
+persist.data.iwlan=1
+persist.data.iwlan.ipsec.ap=1
+persist.dbg.wfc_avail_ovr=1
+persist.sys.cust.lte_config=true
+persist.radio.VT_HYBRID_ENABLE=1
+persist.vendor.ims.disableADBLogs=1
+persist.vendor.ims.disableDebugLogs=1 \
+persist.vendor.ims.disableIMSLogs=1
+persist.vendor.ims.disableQXDMLogs=1
+persist.radio.volte.dan_support=true
 rild.libpath=/vendor/lib64/libril-qc-hal-qmi.so
-#rild.libargs=-d /dev/smd0
 persist.rild.nitz_plmn=
 persist.rild.nitz_long_ons_0=
 persist.rild.nitz_long_ons_1=
@@ -108,9 +130,10 @@ persist.rild.nitz_short_ons_2=
 persist.rild.nitz_short_ons_3=
 ril.subscription.types=NV,RUIM
 DEVICE_PROVISIONED=1
-# Set network mode to (T/L/G/W/1X/EVDO, T/L/G/W/1X/EVDO) for 7+7 mode device on DSDS mode
 ro.telephony.default_network=22,22
 
+# Sensors
+persist.vendor.sensors.enable.mag_filter=true
 
 # SSR
 persist.vendor.ssr.restart_level=ALL_ENABLE
@@ -131,8 +154,6 @@ audio.offload.gapless.enabled=true
 audio.offload.video=true
 av.offload.enable=true
 config.disable_rtt=true
-debug.sf.enable_hwc_vds=1
-debug.sf.latch_unsignaled=1
 debug.stagefright.ccodec=1
 fbe.metadata.wrappedkey=true
 media.aac_51_output_enabled=true
@@ -143,7 +164,6 @@ media.stagefright.enable-http=true
 media.stagefright.enable-player=true
 media.stagefright.enable-qcp=true
 media.stagefright.enable-scan=true
-media.stagefright.thumbnail.prefer_hw_codecs=true
 mm.enable.smoothstreaming=true
 mmp.enable.3g2=true
 persist.audio.button_jack.profile=volume
@@ -175,10 +195,8 @@ persist.vendor.btstack.aac_frm_ctl.enabled=true
 persist.vendor.camera.privapp.list=org.codeaurora.snapcam
 persist.vendor.cne.feature=1
 persist.vendor.data.mode=concurrent
-persist.vendor.dpm.feature=1
 persist.vendor.overlay.izat.optin=rro
 persist.vendor.radio.atfwd.start=true
-persist.vendor.sensors.enable.mag_filter=true
 qemu.hw.mainkeys=0
 ro.adb.secure=0
 debug.sf.hw=1

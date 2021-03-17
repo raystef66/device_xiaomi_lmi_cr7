@@ -1,10 +1,14 @@
+# Adb 
+ro.secure=0
+ro.adb.secure=0
+
 # Audio
 ro.config.media_vol_steps=25
 ro.config.vc_call_vol_steps=7
-ro.secure=0 
-ro.adb.secure=0
 debug.stagefright.omx_default_rank.sw-audio=16
 ro.control_privapp_permissions=log
+
+# Bluetooth
 ro.bluetooth.a2dp_offload.supported=false
 persist.bluetooth.a2dp_offload.disabled=true
 persist.bluetooth.bluetooth_audio_hal.disabled=true
@@ -13,4 +17,4 @@ persist.vendor.qcom.bluetooth.enable.splita2dp=false
 vendor.audio.feature.compr_voip.enable=false
 
 #Camera Support
-vendor.camera.aux.packagelist=org.lineageos.snap,com.google.android.GoogleCamera
+vendor.camera.aux.packagelist=org.lineageos.snap,net.sourceforge.opencamera,com.google.android.GoogleCamera
